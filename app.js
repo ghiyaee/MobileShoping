@@ -2,14 +2,14 @@ const menu = document.querySelector("#menu");
 const list = document.querySelector("#list");
 const listli = document.querySelector("#menuli");
 const listsub = document.querySelector("#listsub");
-// const one8 = document.querySelector("#one8");
+const slider = [...document.querySelector(".sliders").children];
 
-// one8.addEventListener("click", show);
 listli.addEventListener("click", menuli);
 menu.addEventListener("click", menulist);
 let check = true;
 let lisub = true;
 
+console.log(slider);
 function menulist() {
   if (check == true) {
     list.style.display = "block";
@@ -31,3 +31,18 @@ function menuli() {
     lisub = true;
   }
 }
+
+let next = 0;
+function show() {
+  if (next < slider.length) {
+    slider.forEach((list) => {
+      list.classList.remove("active");
+      slider[next].classList.add("active");
+    });
+    next++;
+  } else {
+    next = 0;
+  }
+}
+
+setInterval(show, 4000);

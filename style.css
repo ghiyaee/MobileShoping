@@ -100,23 +100,20 @@ button {
   background: linear-gradient(to right, #fb5283, #ff3527);
   border-radius: 6px;
   cursor: pointer;
-  /* transition: all 2s; */
-}
-button i {
-  width: 30px;
-  visibility: hidden;
-}
-button:hover i {
-  visibility: visible;
-}
-button:hover {
-  width: 160px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 3s;
 }
 
+#bkli {
+  width: 20px;
+  height: 20px;
+  background: rgb(244, 245, 244);
+  border-radius: 50px;
+  text-align: center;
+}
+#by {
+  color: #fa1808;
+  font-weight: bold;
+  font-size: 15px;
+}
 .col-1::after {
   content: "";
   width: 5px;
@@ -159,6 +156,7 @@ button:hover {
   display: flex;
   justify-content: center;
 }
+
 .sliders img {
   width: 50%;
   padding: 5px 0;
@@ -193,21 +191,29 @@ span {
   font-family: sans-serif;
   font-weight: bold;
 }
+p {
+  font-weight: bold;
+}
 @media only screen and (max-width: 700px) {
   nav ul {
-    width: 100%;
-    background: linear-gradient(#ff54a2, #ff575a);
+    width: 25%;
+    height: 100vh;
+    background: linear-gradient(#f5b5cb, #eb5959);
     position: absolute;
     top: 76px;
     right: 0;
     z-index: 2;
-    display: none;
+
+    overflow: hidden;
   }
 
   nav ul li {
     display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  #bkli {
+    display: inline-block;
   }
   nav ul li a {
     color: #fff;
@@ -224,21 +230,21 @@ span {
     margin-bottom: 50px;
   }
   nav ul ul {
+    width: 75%;
     margin-top: 73px;
     box-shadow: 0px 1px 3px 0px #352a2a;
     position: absolute;
-    top: 20px;
-    right: 0px;
+    top: 55px;
+    right: 12px;
     border: none;
     background: linear-gradient(to right, #fb5283, #ff3527);
-    /* display: none; */
   }
   nav ul ul li {
     text-align: center;
   }
   .sliders {
-    width: 400px;
-    height: 220px;
+    width: 250px;
+    height: 150px;
     margin: 0 auto;
     margin-bottom: 50px;
     padding-bottom: 10px;

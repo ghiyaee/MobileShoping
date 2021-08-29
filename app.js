@@ -3,13 +3,15 @@ const list = document.querySelector("#list");
 const listli = document.querySelector("#menuli");
 const listsub = document.querySelector("#listsub");
 const slider = [...document.querySelector(".sliders").children];
-
+const btn = document.querySelector("#bton");
+const by = document.querySelector("#by");
 listli.addEventListener("click", menuli);
 menu.addEventListener("click", menulist);
+btn.addEventListener("click", buy);
 let check = true;
 let lisub = true;
-
-console.log(slider);
+let contby = 1;
+console.log(by.innerText);
 function menulist() {
   if (check == true) {
     list.style.display = "block";
@@ -46,3 +48,7 @@ function show() {
 }
 
 setInterval(show, 4000);
+
+function buy() {
+  by.innerHTML = +by.innerHTML + contby;
+}

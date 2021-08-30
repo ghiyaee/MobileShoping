@@ -5,13 +5,17 @@ const listsub = document.querySelector("#listsub");
 const slider = [...document.querySelector(".sliders").children];
 const btn = document.querySelector("#bton");
 const by = document.querySelector("#by");
+const container = document.querySelector(".container");
+const table = document.querySelector(".buying");
+const price = document.querySelector("h4");
 listli.addEventListener("click", menuli);
 menu.addEventListener("click", menulist);
 btn.addEventListener("click", buy);
+by.addEventListener("click", buying);
 let check = true;
 let lisub = true;
 let contby = 1;
-console.log(by.innerText);
+
 function menulist() {
   if (check == true) {
     list.style.display = "block";
@@ -51,4 +55,48 @@ setInterval(show, 4000);
 
 function buy() {
   by.innerHTML = +by.innerHTML + contby;
+}
+
+function buying() {
+  let sum = 0;
+  container.style.filter = "blur(5px)";
+  table.style.display = "block";
+  table.innerHTML =
+    `<div> <table id="tbl"><thead>
+    <tr ><th>Mobile</th><th>amount</th><th>price</th><th>total</th><th >SubTract</th><th ">Deleted</th></tr></thead>
+    <tbody>
+        <tr class="rows"><td>oneplue 5t</td><td>${by.innerHTML}</td><td>${
+      price.innerHTML
+    }</td><td>${(sum =
+      by.innerHTML *
+      price.innerHTML)}</td><td><a class="subtract"href="#">--</a></td><td><a class="delete"href="#">X</a></td></tr>
+        <tr><td></td><td></td><td></td><td>${sum}</td></tr></tbody>
+  </table> </div>` +
+    `<div><button>buy</button> <button id="exit">cancel</button></div>`;
+  const rows = document.querySelector(".rows");
+  const exit = document.querySelector("#exit");
+  exit.addEventListener("click", outdoor);
+  function outdoor() {
+    table.style.display = "none";
+    container.style.filter = "blur(0px)";
+  }
+  const dele = document.querySelector(".delete");
+  const subtract = document.querySelector(".subtract");
+  subtract.addEventListener("click", sub);
+  dele.addEventListener("click", del);
+  function sub(e) {
+    if (e.target.classList) {
+      by.innerHTML--;
+      buying();
+      if (by.innerHTML < 1) {
+        by.innerHTML = 0;
+      }
+    }
+  }
+  function del(e) {
+    if (e.target.classList) {
+      e.target.parentElement.parentElement.remove();
+      by.innerHTML = 0;
+    }
+  }
 }

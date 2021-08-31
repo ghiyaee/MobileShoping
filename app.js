@@ -8,6 +8,9 @@ const by = document.querySelector("#by");
 const container = document.querySelector(".container");
 const table = document.querySelector(".buying");
 const price = document.querySelector("h4");
+const namep = document.querySelector("h2");
+const option = document.querySelector("#optional");
+console.log(option.children);
 listli.addEventListener("click", menuli);
 menu.addEventListener("click", menulist);
 btn.addEventListener("click", buy);
@@ -65,9 +68,9 @@ function buying() {
     `<div> <table id="tbl"><thead>
     <tr ><th>Mobile</th><th>amount</th><th>price</th><th>total</th><th >SubTract</th><th ">Deleted</th></tr></thead>
     <tbody>
-        <tr class="rows"><td>oneplue 5t</td><td>${by.innerHTML}</td><td>${
-      price.innerHTML
-    }</td><td>${(sum =
+        <tr class="rows"><td>${(namep.innerHTML = option.value)}</td><td>${
+      by.innerHTML
+    }</td><td>${price.innerHTML}</td><td>${(sum =
       by.innerHTML *
       price.innerHTML)}</td><td><a class="subtract"href="#">--</a></td><td><a class="delete"href="#">X</a></td></tr>
         <tr><td></td><td></td><td></td><td>${sum}</td></tr></tbody>
@@ -85,11 +88,13 @@ function buying() {
   subtract.addEventListener("click", sub);
   dele.addEventListener("click", del);
   function sub(e) {
-    if (e.target.classList) {
+    console.log(e.target.classList);
+    if (e.target.classList == "subtract") {
       by.innerHTML--;
-      buying();
+      // buying();
       if (by.innerHTML < 1) {
         by.innerHTML = 0;
+        // e.target.parentElement.parentElement.remove();
       }
     }
   }
@@ -97,6 +102,7 @@ function buying() {
     if (e.target.classList) {
       e.target.parentElement.parentElement.remove();
       by.innerHTML = 0;
+      console.log(e.target.classList);
     }
   }
 }

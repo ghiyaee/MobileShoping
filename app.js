@@ -7,10 +7,16 @@ const btn = document.querySelector("#bton");
 const by = document.querySelector("#by");
 const container = document.querySelector(".container");
 const table = document.querySelector(".buying");
-const price = document.querySelector("h4");
+// const price = document.querySelector("h4");
 const namep = document.querySelector("h2");
 const option = document.querySelector("#optional");
-console.log(option.children);
+const cont = document.querySelector("#cont");
+const product = document.querySelector("#product");
+const select = document.querySelector("select");
+const price = document.querySelector("#price");
+const sum = document.querySelector("#sum");
+const total = document.querySelector("#total");
+console.log(by);
 listli.addEventListener("click", menuli);
 menu.addEventListener("click", menulist);
 btn.addEventListener("click", buy);
@@ -58,27 +64,25 @@ setInterval(show, 4000);
 
 function buy() {
   by.innerHTML = +by.innerHTML + contby;
+  cont.innerHTML = by.innerHTML;
+  product.innerHTML = select.value;
+  if (select.value == "one+5T") {
+    price.innerHTML = 120000000;
+  }
+  if (select.value == "one+6") {
+    price.innerHTML = 150000000;
+  }
+  sum.innerHTML = cont.innerHTML * price.innerHTML;
+  total.innerHTML = sum.innerHTML;
 }
 
 function buying() {
   let sum = 0;
   container.style.filter = "blur(5px)";
   table.style.display = "block";
-  table.innerHTML =
-    `<div> <table id="tbl"><thead>
-    <tr ><th>Mobile</th><th>amount</th><th>price</th><th>total</th><th >SubTract</th><th ">Deleted</th></tr></thead>
-    <tbody>
-        <tr class="rows"><td>${(namep.innerHTML = option.value)}</td><td>${
-      by.innerHTML
-    }</td><td>${price.innerHTML}</td><td>${(sum =
-      by.innerHTML *
-      price.innerHTML)}</td><td><a class="subtract"href="#">--</a></td><td><a class="delete"href="#">X</a></td></tr>
-        <tr><td></td><td></td><td></td><td>${sum}</td></tr></tbody>
-  </table> </div>` +
-    `<div><button>buy</button> <button id="exit">cancel</button></div>`;
   const rows = document.querySelector(".rows");
-  const exit = document.querySelector("#exit");
-  exit.addEventListener("click", outdoor);
+  const close = document.querySelector("#exit");
+  close.addEventListener("click", outdoor);
   function outdoor() {
     table.style.display = "none";
     container.style.filter = "blur(0px)";

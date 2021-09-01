@@ -16,6 +16,7 @@ const select = document.querySelector("select");
 const price = document.querySelector("#price");
 const sum = document.querySelector("#sum");
 const total = document.querySelector("#total");
+const box = document.querySelector("#check");
 console.log(by);
 listli.addEventListener("click", menuli);
 menu.addEventListener("click", menulist);
@@ -62,20 +63,41 @@ function show() {
 
 setInterval(show, 4000);
 
-function buy() {
-  by.innerHTML = +by.innerHTML + contby;
-  cont.innerHTML = by.innerHTML;
-  product.innerHTML = select.value;
-  if (select.value == "one+5T") {
-    price.innerHTML = 120000000;
-  }
-  if (select.value == "one+6") {
-    price.innerHTML = 150000000;
-  }
-  sum.innerHTML = cont.innerHTML * price.innerHTML;
-  total.innerHTML = sum.innerHTML;
+function checkok() {
+  box.style.display = "block";
+}
+function checknot() {
+  box.style.display = "block";
+  box.innerHTML = "شما کالایی انتخاب نکردید";
+  box.style.background = "red";
+  box.style.color = "white";
 }
 
+function buy() {
+  if (select.value == "") {
+    checknot();
+    setTimeout(() => {
+      box.remove();
+    }, 2000);
+  } else {
+    if (select.value == "one+5T") {
+      price.innerHTML = 120000000;
+    }
+    if (select.value == "one+6") {
+      price.innerHTML = 150000000;
+    }
+    by.innerHTML = +by.innerHTML + contby;
+    cont.innerHTML = by.innerHTML;
+    product.innerHTML = select.value;
+
+    sum.innerHTML = cont.innerHTML * price.innerHTML;
+    total.innerHTML = sum.innerHTML;
+    checkok();
+    setTimeout(() => {
+      box.remove();
+    }, 2000);
+  }
+}
 function buying() {
   let sum = 0;
   container.style.filter = "blur(5px)";

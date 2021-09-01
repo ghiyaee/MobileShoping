@@ -10,13 +10,21 @@ const table = document.querySelector(".buying");
 // const price = document.querySelector("h4");
 const namep = document.querySelector("h2");
 const option = document.querySelector("#optional");
-const cont = document.querySelector("#cont");
+
 const product = document.querySelector("#product");
 const select = document.querySelector("select");
 const price = document.querySelector("#price");
 const sum = document.querySelector("#sum");
-const total = document.querySelector("#total");
+let total = document.querySelector("#total");
 const box = document.querySelector("#check");
+const product1 = document.querySelector("#product1");
+
+const price1 = document.querySelector("#price1");
+const sum1 = document.querySelector("#sum1");
+const cont = document.querySelector("#cont");
+const cont1 = document.querySelector("#cont1");
+const mid1 = document.querySelector("#mid-1");
+const mid2 = document.querySelector("#mid-2");
 console.log(by);
 listli.addEventListener("click", menuli);
 menu.addEventListener("click", menulist);
@@ -24,8 +32,8 @@ btn.addEventListener("click", buy);
 by.addEventListener("click", buying);
 let check = true;
 let lisub = true;
-let contby = 1;
-
+let con1 = 1;
+let con2 = 1;
 function menulist() {
   if (check == true) {
     list.style.display = "block";
@@ -65,11 +73,14 @@ setInterval(show, 4000);
 
 function checkok() {
   box.style.display = "block";
+  box.innerHTML = "کالا به سبد خرید  اضافه شد";
+  box.style.background = ` linear-gradient(to right, #41a029, #0ca168)`;
+  box.style.color = "white";
 }
 function checknot() {
   box.style.display = "block";
   box.innerHTML = "شما کالایی انتخاب نکردید";
-  box.style.background = "red";
+  box.style.background = `background: linear-gradient(to right, #fb5283, #ff3527);`;
   box.style.color = "white";
 }
 
@@ -77,25 +88,41 @@ function buy() {
   if (select.value == "") {
     checknot();
     setTimeout(() => {
-      box.remove();
-    }, 2000);
+      box.style.display = "none";
+    }, 2500);
   } else {
     if (select.value == "one+5T") {
+      mid1.style.display = "block";
       price.innerHTML = 120000000;
+      cont.innerHTML = +cont.innerHTML + con1;
+      console.log(cont);
+      by.style.color = ` rgb(99,231,99)`;
+      by.style.fontSize = "25px";
+
+      product.innerHTML = select.value;
+      sum.innerHTML = cont.innerHTML * price.innerHTML;
+      // total.innerHTML = sum.innerHTML;
+      checkok();
+      setTimeout(() => {
+        box.style.display = "none";
+      }, 2500);
+      select.value = "";
     }
     if (select.value == "one+6") {
-      price.innerHTML = 150000000;
+      mid2.style.display = "block";
+      price1.innerHTML = 150000000;
+      cont1.innerHTML = +cont1.innerHTML + con2;
+      by.style.color = ` linear-gradient(to right, #41a029, #0ca168)`;
+      product1.innerHTML = select.value;
+      sum1.innerHTML = cont1.innerHTML * price1.innerHTML;
+      // total.innerHTML = sum1.innerHTML;
+      checkok();
+      setTimeout(() => {
+        box.style.display = "none";
+      }, 2500);
+      select.value = "";
     }
-    by.innerHTML = +by.innerHTML + contby;
-    cont.innerHTML = by.innerHTML;
-    product.innerHTML = select.value;
-
-    sum.innerHTML = cont.innerHTML * price.innerHTML;
-    total.innerHTML = sum.innerHTML;
-    checkok();
-    setTimeout(() => {
-      box.remove();
-    }, 2000);
+    total.innerHTML = Number(sum.innerHTML) + Number(sum1.innerHTML);
   }
 }
 function buying() {

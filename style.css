@@ -59,6 +59,9 @@ nav ul ul li {
   padding: 7px;
   color: whitesmoke;
 }
+#by {
+  cursor: pointer;
+}
 #listsub {
   display: none;
 }
@@ -110,7 +113,7 @@ button,
 #check {
   margin-top: 5px;
   font-weight: bold;
-  background: linear-gradient(to right, #74fb52, #0ca168);
+
   color: #000;
   display: none;
 }
@@ -235,14 +238,14 @@ button,
   margin-top: 30px;
 }
 .left img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
 .mid {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   /* align-items: center; */
-  flex-direction: column;
+  /* flex-direction: column; */
   font-weight: bold;
 }
 .mid div {
@@ -253,6 +256,12 @@ button,
   display: flex;
   justify-content: center;
   padding: 10px 10px;
+}
+#mi-1,
+#mid-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .right {
   display: flex;
@@ -271,7 +280,15 @@ button,
   background: linear-gradient(#c58da1, #eb5959);
   color: #e7e3e3;
 }
-
+#mid-1 {
+  display: none;
+}
+#mid-2 {
+  display: none;
+}
+#by {
+  /* font-size: 20px; */
+}
 @media only screen and (max-width: 700px) {
   nav ul {
     width: 100%;
